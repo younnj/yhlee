@@ -1,13 +1,692 @@
-<html>
-  <head>
-    <title>yhlee</title>
-    <style>
-      h1 { color: blue; }
-      p { color: red;}
-    </style>
-  </head>
-  <body>
-    <h1>Welcome to yhlee Home!</h1>
-    <p> Hi! </p>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>YH Lee</title>
+
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --surface: #ffffff;
+      --text: #18202a;
+      --subtext: #667085;
+      --line: #e5e7eb;
+      --accent: #315b8a;
+      --accent-light: #eaf0f7;
+      --max-width: 920px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ---------- Navigation ---------- */
+
+    nav {
+      position: sticky;
+      top: 0;
+
+      background: rgba(247, 248, 250, 0.88);
+      backdrop-filter: blur(12px);
+
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+      z-index: 10;
+    }
+
+    .nav-container {
+      max-width: var(--max-width);
+      margin: auto;
+      padding: 16px 28px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-name {
+      font-weight: 650;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+
+      font-size: 14px;
+      color: var(--subtext);
+    }
+
+    .nav-links a {
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* ---------- General ---------- */
+
+    main {
+      max-width: var(--max-width);
+      margin: auto;
+      padding: 0 28px;
+    }
+
+    section {
+      margin-bottom: 110px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+
+      color: var(--accent);
+
+      margin-bottom: 28px;
+    }
+
+    /* ---------- Hero ---------- */
+
+    .hero {
+      min-height: 72vh;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      padding: 80px 0;
+    }
+
+    .hero-label {
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 600;
+
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      margin: 0;
+
+      font-size: clamp(48px, 8vw, 78px);
+      line-height: 1.05;
+
+      letter-spacing: -0.055em;
+      font-weight: 700;
+    }
+
+    .hero-description {
+      max-width: 650px;
+
+      margin-top: 28px;
+
+      font-size: 20px;
+      line-height: 1.65;
+
+      color: var(--subtext);
+    }
+
+    .hero-description strong {
+      color: var(--text);
+      font-weight: 550;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 18px;
+
+      margin-top: 36px;
+
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .hero-links a {
+      padding-bottom: 3px;
+      border-bottom: 1px solid var(--text);
+
+      transition: 0.2s;
+    }
+
+    .hero-links a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* ---------- About ---------- */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 60px;
+    }
+
+    .about-heading {
+      font-size: 27px;
+      font-weight: 650;
+      line-height: 1.35;
+      letter-spacing: -0.025em;
+    }
+
+    .about-text {
+      color: var(--subtext);
+      font-size: 16px;
+    }
+
+    .about-text p:first-child {
+      margin-top: 0;
+    }
+
+    /* ---------- Research ---------- */
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .research-card {
+      background: var(--surface);
+
+      border: 1px solid var(--line);
+      border-radius: 12px;
+
+      padding: 28px;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .research-card:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .research-number {
+      font-size: 12px;
+      color: var(--accent);
+
+      margin-bottom: 26px;
+    }
+
+    .research-card h3 {
+      margin: 0 0 10px 0;
+
+      font-size: 19px;
+      letter-spacing: -0.02em;
+    }
+
+    .research-card p {
+      margin: 0;
+
+      font-size: 14px;
+      line-height: 1.65;
+
+      color: var(--subtext);
+    }
+
+    /* ---------- Projects / Publications ---------- */
+
+    .project {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+
+      padding: 28px 0;
+
+      border-top: 1px solid var(--line);
+    }
+
+    .project:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .project-year {
+      color: var(--subtext);
+      font-size: 14px;
+    }
+
+    .project-title {
+      font-size: 18px;
+      font-weight: 600;
+
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .project-description {
+      max-width: 620px;
+
+      font-size: 14px;
+      color: var(--subtext);
+
+      margin-bottom: 10px;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 14px;
+
+      font-size: 13px;
+      font-weight: 600;
+
+      color: var(--accent);
+    }
+
+    /* ---------- Contact ---------- */
+
+    .contact {
+      padding: 60px;
+
+      background: #17212e;
+      color: white;
+
+      border-radius: 16px;
+    }
+
+    .contact .section-title {
+      color: #8fb3d9;
+    }
+
+    .contact h2 {
+      margin: 0;
+
+      font-size: 38px;
+      line-height: 1.25;
+
+      letter-spacing: -0.035em;
+    }
+
+    .contact p {
+      max-width: 520px;
+
+      margin-top: 18px;
+
+      color: #b9c2cd;
+    }
+
+    .contact a {
+      display: inline-block;
+
+      margin-top: 18px;
+
+      border-bottom: 1px solid white;
+    }
+
+    /* ---------- Footer ---------- */
+
+    footer {
+      max-width: var(--max-width);
+
+      margin: auto;
+      padding: 10px 28px 40px;
+
+      color: var(--subtext);
+      font-size: 12px;
+    }
+
+    /* ---------- Mobile ---------- */
+
+    @media (max-width: 700px) {
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .nav-links a:nth-child(2) {
+        display: none;
+      }
+
+      .hero {
+        min-height: 65vh;
+      }
+
+      .hero-description {
+        font-size: 18px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .research-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project {
+        grid-template-columns: 1fr;
+        gap: 5px;
+      }
+
+      .contact {
+        padding: 38px 28px;
+      }
+
+      .contact h2 {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+<nav>
+  <div class="nav-container">
+
+    <a href="#" class="nav-name">
+      YH Lee
+    </a>
+
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+  </div>
+</nav>
+
+
+<main>
+
+  <!-- Hero -->
+
+  <section class="hero">
+
+    <div class="hero-label">
+      Robotics · Manipulation · Human–Robot Interaction
+    </div>
+
+    <h1>
+      YH Lee
+    </h1>
+
+    <div class="hero-description">
+      I build robotic systems that explore
+      <strong>intuitive physical interaction</strong>
+      between humans, robots, and objects —
+      with a particular interest in
+      teleoperation, manipulation, and novel robotic mechanisms.
+    </div>
+
+    <div class="hero-links">
+      <a href="#research">Research</a>
+
+      <!-- Replace links below -->
+      <a href="https://github.com/" target="_blank">
+        GitHub ↗
+      </a>
+
+      <a href="#">
+        CV ↗
+      </a>
+    </div>
+
+  </section>
+
+
+  <!-- About -->
+
+  <section id="about">
+
+    <div class="section-title">
+      About
+    </div>
+
+    <div class="about-grid">
+
+      <div class="about-heading">
+        Designing robots from
+        mechanics to interaction.
+      </div>
+
+      <div class="about-text">
+
+        <p>
+          I am interested in robotic systems where mechanical design,
+          sensing, control, and human interaction are tightly connected.
+        </p>
+
+        <p>
+          My current work focuses on robotic manipulation and teleoperation,
+          particularly on interfaces that allow human motion to be transferred
+          to robotic systems in a direct and intuitive manner.
+        </p>
+
+        <p>
+          More broadly, I am interested in unconventional robotic mechanisms,
+          wearable devices, soft robotics, and physical intelligence.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Research -->
+
+  <section id="research">
+
+    <div class="section-title">
+      Research Interests
+    </div>
+
+    <div class="research-grid">
+
+      <div class="research-card">
+
+        <div class="research-number">
+          01
+        </div>
+
+        <h3>
+          Robotic Manipulation
+        </h3>
+
+        <p>
+          Mechanisms and control strategies for precise,
+          dexterous interaction with physical objects.
+        </p>
+
+      </div>
+
+
+      <div class="research-card">
+
+        <div class="research-number">
+          02
+        </div>
+
+        <h3>
+          Teleoperation
+        </h3>
+
+        <p>
+          Human interfaces and mechanically intuitive mappings
+          for transferring motion between operators and robots.
+        </p>
+
+      </div>
+
+
+      <div class="research-card">
+
+        <div class="research-number">
+          03
+        </div>
+
+        <h3>
+          Wearable Robotics
+        </h3>
+
+        <p>
+          Compact robotic interfaces that physically integrate
+          with the human body and preserve natural interaction.
+        </p>
+
+      </div>
+
+
+      <div class="research-card">
+
+        <div class="research-number">
+          04
+        </div>
+
+        <h3>
+          Novel Mechanisms
+        </h3>
+
+        <p>
+          Tendon-driven, soft, and unconventional structures
+          that enable new robotic behaviors.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Projects -->
+
+  <section id="projects">
+
+    <div class="section-title">
+      Selected Work
+    </div>
+
+
+    <div class="project">
+
+      <div class="project-year">
+        2026
+      </div>
+
+      <div>
+
+        <div class="project-title">
+          Wearable Gripper for Kinematically Identical Teleoperation
+        </div>
+
+        <div class="project-description">
+          A wearable leader interface designed to reproduce the
+          kinematics and physical dimensions of a robotic gripper,
+          enabling direct 1:1 teleoperation for fine manipulation.
+        </div>
+
+        <div class="project-links">
+          <a href="#">Paper</a>
+          <a href="#">Video</a>
+          <a href="#">Code</a>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="project">
+
+      <div class="project-year">
+        2026
+      </div>
+
+      <div>
+
+        <div class="project-title">
+          Robotic Mechanisms & Physical Interaction
+        </div>
+
+        <div class="project-description">
+          Experimental robotic systems investigating sensing,
+          actuation, mechanical transmission, and object interaction.
+        </div>
+
+        <div class="project-links">
+          <a href="#">Project</a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Contact -->
+
+  <section id="contact" class="contact">
+
+    <div class="section-title">
+      Contact
+    </div>
+
+    <h2>
+      Interested in robots,<br>
+      mechanisms, or manipulation?
+    </h2>
+
+    <p>
+      I am always interested in discussing robotics,
+      research ideas, and experimental systems.
+    </p>
+
+    <!-- Replace with your email -->
+
+    <a href="mailto:your-email@example.com">
+      your-email@example.com
+    </a>
+
+  </section>
+
+</main>
+
+
+<footer>
+  © 2026 YH Lee.
+  Built with HTML & CSS and hosted on GitHub Pages.
+</footer>
+
+</body>
 </html>
